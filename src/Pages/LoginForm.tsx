@@ -55,7 +55,6 @@ const LoginForm = () => {
       <Box
         className="container mt-5"
         maxW="sm"
-        p={5}
         boxShadow="lg"
         borderRadius="md"
       >

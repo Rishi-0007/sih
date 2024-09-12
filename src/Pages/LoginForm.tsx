@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import loginLogo from "../assets/login.png";
-import useUsersStore from "../store";
+import useUsersStore from "../assets/store";
 
 const schema = z.object({
   name: z.string().min(3, "Username must be at least 3 characters"),

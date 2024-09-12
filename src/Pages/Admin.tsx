@@ -1,5 +1,12 @@
+import Navbar from "../components/Navbar";
+
 const Admin = () => {
-  return <div>hello Admin</div>;
+  return(
+    <div>
+      <Navbar></Navbar>
+      <p>Hi Admin</p>
+    </div>
+  );
 };
 
 export default Admin;

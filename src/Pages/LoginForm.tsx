@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import ColorModeSwitch from "../components/ColorModeSwitch";
 
 const schema = z.object({
   name: z.string().min(3, "Username must be at least 3 characters"),
@@ -36,6 +37,7 @@ const LoginForm = () => {
       boxShadow="md"
       borderRadius="md"
     >
+      <ColorModeSwitch />
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl className="mb-3">
           <FormLabel htmlFor="username">Username</FormLabel>

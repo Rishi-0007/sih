@@ -1,11 +1,11 @@
 {
   "name": "Attendance App",
-  "short_name": "AttendanceApp",
+  "short_name": "Attendance App",
   "description": "An app to manage attendance",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4285f4",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/src/assets/icons/android-chrome-192x192.png",

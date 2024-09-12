@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -29,19 +29,45 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl>
-        <FormLabel>Username</FormLabel>
-        <Input {...register("name", { required: true })} type="text"></Input>
-        {errors.name && <p>{errors.name.message}</p>}
-        <FormLabel>Password</FormLabel>
-        <Input {...register("password")} type="password"></Input>
-        {errors.name && <p>{errors.name.message}</p>}
-        <button className="btn btn-primary mt-3" type="submit">
-          Login
+    <Box
+      className="container mt-5"
+      maxW="sm"
+      p={5}
+      boxShadow="md"
+      borderRadius="md"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl className="mb-3">
+          <FormLabel htmlFor="username">Username</FormLabel>
+          <Input
+            id="username"
+            type="text"
+            placeholder="Enter your username"
+            className="form-control"
+            {...register("name")}
+          />
+          {errors.name && <p className="text-danger">{errors.name.message}</p>}
+        </FormControl>
+
+        <FormControl className="mb-3">
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            className="form-control"
+            {...register("password")}
+          />
+          {errors.password && (
+            <p className="text-danger">{errors.password.message}</p>
+          )}
+        </FormControl>
+
+        <button type="submit" className="btn btn-primary w-100">
+          Submit
         </button>
-      </FormControl>
-    </form>
+      </form>
+    </Box>
   );
 };
 

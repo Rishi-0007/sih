@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginForm from "./Pages/LoginForm";
-import Admin from "./components/Admin";
-import Employee from "./components/Employee";
+import Admin from "./Pages/Admin";
+import Employee from "./Pages/Employee";
 
 const router = createBrowserRouter([
   {

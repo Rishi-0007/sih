@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormLabel,
   Image,
@@ -12,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import loginLogo from "../assets/login.png";
+import useUsersStore from "../store";
 
 const schema = z.object({
   name: z.string().min(3, "Username must be at least 3 characters"),
@@ -29,7 +31,10 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
+  const { addUser } = useUsersStore();
+
   const onSubmit = (data: FormData) => {
+    addUser({ id: 1, name: data.name });
     if (data.name === "admin" && data.password === "password") {
       navigate("/admin");
     } else {
@@ -83,9 +88,9 @@ const LoginForm = () => {
             )}
           </FormControl>
 
-          <button type="submit" className="btn btn-primary w-100">
+          <Button type="submit" colorScheme="teal" width={"100%"}>
             Submit
-          </button>
+          </Button>
         </form>
       </Box>
     </VStack>

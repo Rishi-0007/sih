@@ -1,9 +1,9 @@
 import Navbar from "../components/Navbar";
 
 const Admin = () => {
-  return(
+  return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
       <p>Hi Admin</p>
     </div>
   );

@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/routes.tsx","./src/store.ts","./src/theme.ts","./src/vite-env.d.ts","./src/Pages/Admin.tsx","./src/Pages/Employee.tsx","./src/Pages/LoginForm.tsx","./src/components/ColorModeSwitch.tsx","./src/components/Navbar.tsx"],"version":"5.6.2"}

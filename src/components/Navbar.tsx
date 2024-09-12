@@ -1,20 +1,22 @@
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Flex,
   Avatar,
+  Box,
+  Button,
+  Flex,
   HStack,
   IconButton,
-  Button,
+  Image,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
   MenuDivider,
-  useDisclosure,
-  useColorModeValue,
+  MenuItem,
+  MenuList,
   Stack,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import Logo from "../assets/logo.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 
 interface Props {
@@ -58,7 +60,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
+            <Image src={Logo} objectFit={"cover"} boxSize={12} />
             <HStack
               as={"nav"}
               spacing={4}

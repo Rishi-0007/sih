@@ -121,8 +121,12 @@ const Employee: React.FC = () => {
               colorScheme={isCheckedIn ? "red" : "green"}
               onClick={handleCheckInOut}
             >
-              {isCheckedIn ? <FaTimes /> : <FaCheck />}
-              {isCheckedIn ? " Check Out" : " Check In"}
+              <HStack spacing={3}>
+                {isCheckedIn ? <FaTimes /> : <FaCheck />}
+                <Text fontSize={"lg"} marginY={1}>
+                  {isCheckedIn ? " Check Out" : " Check In"}
+                </Text>
+              </HStack>
             </Button>
           </Flex>
         </Box>
@@ -141,15 +145,15 @@ const Employee: React.FC = () => {
             <Bar data={data} options={options} />
           </Box>
           <Box bg="blue.100" p={4} borderRadius="md" shadow="md" w="100%">
-            <Text fontSize="xl" fontWeight="bold">
-              Today Work Hours: {workingHours}
+            <Text fontSize="xl" fontWeight="bold" color={"black"}>
+              Today's Work Hours: {workingHours}
             </Text>
           </Box>
         </VStack>
 
         {/* Notifications (Placeholder) */}
         <Box mt={8} p={4} bg="yellow.100" borderRadius="md" shadow="md">
-          <Text fontSize="md" fontWeight="medium">
+          <Text fontSize="md" fontWeight="light" color={"gray"}>
             No new notifications
           </Text>
         </Box>

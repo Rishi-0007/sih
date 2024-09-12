@@ -21,7 +21,11 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
+    if (data.name === "admin" && data.password === "password") {
+      navigate("/admin");
+    } else {
+      navigate("/employee");
+    }
   };
 
   return (
@@ -31,7 +35,7 @@ const LoginForm = () => {
         <Input {...register("name", { required: true })} type="text"></Input>
         {errors.name && <p>{errors.name.message}</p>}
         <FormLabel>Password</FormLabel>
-        <Input {...register("password")} type="number"></Input>
+        <Input {...register("password")} type="password"></Input>
         {errors.name && <p>{errors.name.message}</p>}
         <button className="btn btn-primary mt-3" type="submit">
           Login

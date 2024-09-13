@@ -1,10 +1,9 @@
 import Navbar from "../components/Navbar";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Heading,
   Button,
-  ButtonGroup,
   Text,
   Flex,
   Table,
@@ -22,24 +21,20 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-  useBreakpointValue,
 } from "@chakra-ui/react";
+import useUsersStore, { User } from "../assets/store";
+// import useUsersStore from "../store/useUsersStore"; // Import your Zustand store
 
 const Admin = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-  //Employees Data
-  const employees = [
-    { name: "John Doe", position: "Software Engineer", attendance: "95%" },
-    { name: "Jane Doe", position: "Product Manager", attendance: "98%" },
-    { name: "Ramphal", position: "Sweeper", attendance: "87%" },
-  ];
+  // Use Zustand hook to get users from the store
+  const { users } = useUsersStore();
 
-
-  const handleAttendanceClick = (employee) => {
-    setSelectedEmployee(employee); 
-    onOpen(); 
+  const handleAttendanceClick = (user: User) => {
+    setSelectedUser(user);
+    onOpen();
   };
 
   return (
@@ -53,10 +48,10 @@ const Admin = () => {
           </Text>
         </Flex>
 
-        {/* Employee Table */}
+        {/* Users Table */}
         <Box p={4} bg="blue.100" borderRadius="md" shadow="md">
           <Heading as="h2" size="md" mb={4} color="black">
-            Present Employees
+            Present Users
           </Heading>
 
           <Table variant="simple" colorScheme="blue">
@@ -66,23 +61,18 @@ const Admin = () => {
             <Thead>
               <Tr>
                 <Th px={2}>Name</Th>
-                <Th px={2}>Position</Th>
-                <Th isNumeric px={2}>Attendance</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {employees.map((employee, index) => (
-                <Tr key={index}>
-                  <Td px={2}>{employee.name}</Td>
-                  <Td px={2}>{employee.position}</Td>
+              {users.map((user) => (
+                <Tr key={user.id}>
                   <Td
                     px={2}
-                    isNumeric
                     cursor="pointer"
-                    onClick={() => handleAttendanceClick(employee)}
+                    onClick={() => handleAttendanceClick(user)}
                     _hover={{ bg: "gray.100" }}
                   >
-                    {employee.attendance}
+                    {user.name}
                   </Td>
                 </Tr>
               ))}
@@ -90,72 +80,20 @@ const Admin = () => {
           </Table>
         </Box>
 
-        {/* Notifications */}
-        <Box mt={8} p={4} bg="yellow.100" borderRadius="md" shadow="md">
-          <Heading as="h2" size="md" mb={4} color="black">
-            Notifications
-          </Heading>
-
-          {/* Sample Notification 1 */}
-          <Box mb={4}>
-            <Text fontSize="md" fontWeight="light" color="gray">
-              New meeting scheduled for tomorrow at 10:00 AM.
-            </Text>
-            <ButtonGroup mt={2}>
-              <Button colorScheme="green">ACCEPT</Button>
-              <Button colorScheme="red">DECLINE</Button>
-              <Button bg="gray.200" color="black" _hover={{ bg: "gray.300" }}>
-                DETAILS
-              </Button>
-            </ButtonGroup>
-          </Box>
-
-          {/* Sample Notification 2 */}
-          <Box mb={4}>
-            <Text fontSize="md" fontWeight="light" color="gray">
-              You have a new message from HR regarding policy updates.
-            </Text>
-            <ButtonGroup mt={2}>
-              <Button colorScheme="green">ACCEPT</Button>
-              <Button colorScheme="red">DECLINE</Button>
-              <Button bg="gray.200" color="black" _hover={{ bg: "gray.300" }}>
-                DETAILS
-              </Button>
-            </ButtonGroup>
-          </Box>
-
-          {/* Sample Notification 3 */}
-          <Box mb={4}>
-            <Text fontSize="md" fontWeight="light" color="gray">
-              Your leave request for next week has been approved.
-            </Text>
-            <ButtonGroup mt={2}>
-              <Button colorScheme="green">ACCEPT</Button>
-              <Button colorScheme="red">DECLINE</Button>
-              <Button bg="gray.200" color="black" _hover={{ bg: "gray.300" }}>
-                DETAILS
-              </Button>
-            </ButtonGroup>
-          </Box>
-
-          {/* If no new notifications */}
-        </Box>
-
         {/* Modal */}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Employee Details</ModalHeader>
+            <ModalHeader>User Details</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              {selectedEmployee ? (
+              {selectedUser ? (
                 <Box>
-                  <Text fontWeight="bold">Name: {selectedEmployee.name}</Text>
-                  <Text>Position: {selectedEmployee.position}</Text>
-                  <Text>Attendance: {selectedEmployee.attendance}</Text>
+                  <Text fontWeight="bold">Name: {selectedUser.name}</Text>
+                  {/* You can add other user details here if needed */}
                 </Box>
               ) : (
-                <Text>No employee selected</Text>
+                <Text>No user selected</Text>
               )}
             </ModalBody>
 

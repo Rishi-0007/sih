@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Heading,
   Button,
   Text,
   Flex,
@@ -24,7 +23,6 @@ import {
 } from "chart.js";
 import Navbar from "../components/Navbar";
 import useUsersStore from "../assets/store";
-import AttendanceCalendar from "../components/AttendanceCalendar";
 
 // Register chart.js components
 ChartJS.register(
@@ -151,28 +149,6 @@ const Employee: React.FC = () => {
               Today's Work Hours: {workingHours}
             </Text>
           </Box>
-          {/* <Box
-            bg="blue.100"
-            p={4}
-            borderRadius="md"
-            shadow="md"
-            w="100%"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Heading
-              as="h2"
-              size="md"
-              mb={4}
-              color="black"
-              alignSelf="flex-start"
-            >
-              Employee Performance
-            </Heading>
-            <AttendanceCalendar />
-          </Box> */}
         </VStack>
 
         {/* Notifications (Placeholder) */}

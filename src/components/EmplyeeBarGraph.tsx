@@ -1,14 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
-import { useState } from "react";
 
 import { Bar } from "react-chartjs-2";
 
@@ -23,7 +22,6 @@ ChartJS.register(
 );
 
 const EmplyeeBarGraph = () => {
-  const [workingHours] = useState(8); // Example data for today's work hours
   // Hardcoded work hours for the past week (in hours)
   const workHoursData = [8, 7.5, 6, 8.5, 7, 6.5, 8]; // Example data
 

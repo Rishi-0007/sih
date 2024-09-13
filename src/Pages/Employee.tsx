@@ -1,20 +1,20 @@
-import React, { useState } from "react";
 import {
   Box,
   Button,
-  Text,
   Flex,
+  HStack,
   Spacer,
+  Text,
   useToast,
   VStack,
-  HStack,
 } from "@chakra-ui/react";
-import { FaCheck, FaTimes, FaClock } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
+import { FaCheck, FaClock, FaTimes } from "react-icons/fa";
 
-import Navbar from "../components/Navbar";
 import useUsersStore from "../assets/store";
 import EmplyeeBarGraph from "../components/EmplyeeBarGraph";
+import Navbar from "../components/Navbar";
 
 const Employee: React.FC = () => {
   const [isCheckedIn, setIsCheckedIn] = useState(false);

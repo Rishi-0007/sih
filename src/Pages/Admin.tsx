@@ -24,6 +24,7 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import EmployeeRingChartCard from "../components/EmployeeRingChartCard";
+import EmplyeeBarGraph from "../components/EmplyeeBarGraph";
 
 interface Employee {
   name: string;
@@ -136,7 +137,7 @@ const Admin = () => {
         {/* Modal */}
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent margin={4}>
             <ModalHeader>Employee Details</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
@@ -149,6 +150,8 @@ const Admin = () => {
               ) : (
                 <Text>No employee selected</Text>
               )}
+
+              <EmplyeeBarGraph />
             </ModalBody>
 
             <ModalFooter>

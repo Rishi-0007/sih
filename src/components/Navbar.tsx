@@ -16,6 +16,8 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 
@@ -47,6 +49,7 @@ const NavLink = (props: Props) => {
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -88,10 +91,18 @@ export default function Navbar() {
                 />
               </MenuButton>
               <MenuList>
-                <ColorModeSwitch></ColorModeSwitch>
-                <MenuItem>Link 2</MenuItem>
+                <ColorModeSwitch />
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem textColor={"red"} fontWeight={500}>
+                  <Button
+                    onClick={() => navigate("/")}
+                    width={"100%"}
+                    colorScheme="red"
+                    justifyContent={"space-between"}
+                  >
+                    Log Out <MdLogout />
+                  </Button>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>

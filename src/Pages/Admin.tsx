@@ -23,6 +23,7 @@ import {
   useDisclosure,
   ButtonGroup,
 } from "@chakra-ui/react";
+import EmployeeRingChartCard from "../components/EmployeeRingChartCard";
 
 interface Employee {
   name: string;
@@ -59,6 +60,8 @@ const Admin = () => {
           </Text>
         </Flex>
 
+        <EmployeeRingChartCard presentEmployees={37} totalEmployees={50} />
+
         {/* Employee Table */}
         <Box p={4} bg="blue.100" borderRadius="md" shadow="md">
           <Heading as="h2" size="md" mb={4} color="black">
@@ -80,16 +83,15 @@ const Admin = () => {
             </Thead>
             <Tbody>
               {employees.map((employee, index) => (
-                <Tr key={index}>
+                <Tr
+                  key={index}
+                  cursor="pointer"
+                  onClick={() => handleAttendanceClick(employee)}
+                  _hover={{ bg: "gray.100" }}
+                >
                   <Td px={2}>{employee.name}</Td>
                   <Td px={2}>{employee.position}</Td>
-                  <Td
-                    px={2}
-                    isNumeric
-                    cursor="pointer"
-                    onClick={() => handleAttendanceClick(employee)}
-                    _hover={{ bg: "gray.100" }}
-                  >
+                  <Td px={2} isNumeric>
                     {employee.attendance}
                   </Td>
                 </Tr>

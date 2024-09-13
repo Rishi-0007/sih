@@ -34,11 +34,11 @@ const LoginForm = () => {
   const { addUser } = useUsersStore();
 
   const onSubmit = (data: FormData) => {
-    addUser({ id: 1, name: data.name });
     if (data.name === "admin" && data.password === "password") {
       navigate("/admin");
     } else {
       navigate("/employee");
+      addUser({ id: 1, name: data.name });
     }
   };
 

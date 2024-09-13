@@ -61,11 +61,6 @@ const EmplyeeBarGraph = () => {
       <Box bg="white" p={4} borderRadius="md" shadow="md" w="100%">
         <Bar data={data} options={options} />
       </Box>
-      <Box bg="blue.100" p={4} borderRadius="md" shadow="md" w="100%">
-        <Text fontSize="xl" fontWeight="bold" color={"black"}>
-          Today's Work Hours: {workingHours}
-        </Text>
-      </Box>
     </>
   );
 };

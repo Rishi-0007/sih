@@ -91,6 +91,12 @@ const Employee: React.FC = () => {
           </HStack>
 
           <EmplyeeBarGraph />
+
+          <Box bg="blue.100" p={4} borderRadius="md" shadow="md" w="100%">
+            <Text fontSize="xl" fontWeight="bold" color={"black"}>
+              Today's Work Hours: 8 hours
+            </Text>
+          </Box>
         </VStack>
 
         {/* Notifications (Placeholder) */}
